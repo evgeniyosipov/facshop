@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition 
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+    xmlns:h="http://xmlns.jcp.org/jsf/html"
+    xmlns:f="http://xmlns.jcp.org/jsf/core"
+    template="/template.xhtml"
+    xmlns:util="http://java.sun.com/jsf/composite/util"
+    xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+
+    <ui:define name="title">
+        #{bundle.BrowserTabStorePageTitle}
+    </ui:define>
+
+    <ui:define name="body">
+        <h:form>
+            <h2>#{bundle.Welcome_Msg}</h2> <br />
+            <c:choose id="wlcmsg">
+
+                <c:when test="#{userController.authenticatedUser != null}">
+                    <h4>#{bundle.Welcome_Logged_User}</h4>
+                </c:when>              
+
+                <c:otherwise>
+                    <h4>#{bundle.Welcome_Signup_Phrase} <h:commandLink action="customer/Create.xhtml" value="#{bundle.Welcome_Signup_Button}" /></h4>                
+                </c:otherwise>
+
+            </c:choose>
+            <br />
+        </h:form>
+    </ui:define> 
+
+</ui:composition>

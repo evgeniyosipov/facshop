@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:cc="http://java.sun.com/jsf/composite"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+
+    <cc:interface>
+    </cc:interface>
+
+    <cc:implementation>
+        <h:form>
+            <c:forEach items="#{breadcrumb.links}" var="link" >
+                <h:commandLink value="#{link.key}" action="#{link.value.toString()}" />
+                <h:outputText value=" &#187; " escape="false" />
+            </c:forEach>
+        </h:form>
+    </cc:implementation>
+
+</html>

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE HTML>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                template="/template.xhtml">
+
+    <ui:define name="title">
+        Login
+    </ui:define>
+
+    <ui:define name="body">
+
+        <h:form>
+            <h:panelGrid columns="2">
+                <h:outputLabel value="#{bundle.Username_Label}" for="username" />
+                <h:inputText id="username" value="#{userController.username}" />
+
+                <h:outputLabel value="#{bundle.Password_Label}" for="password" />
+                <h:inputSecret id="password" value="#{userController.password}" />
+
+                <h:commandButton action="#{userController.login}" value="#{bundle.Login_label}" rendered="#{!userController.logged}" />
+                <h:commandButton action="#{userController.logout}" value="#{bundle.Topbar_Logout_Label}" rendered="#{userController.logged}" />
+
+            </h:panelGrid>
+
+        </h:form>
+
+    </ui:define>
+
+</ui:composition>

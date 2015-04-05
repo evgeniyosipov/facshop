@@ -1,0 +1,110 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    
+    <groupId>ru.evgeniyosipov.facshop</groupId>
+    <artifactId>facshop</artifactId>
+    <version>1.0</version>
+    <packaging>pom</packaging>
+    <name>facshop</name>
+    
+    <dependencies>
+        <dependency>
+            <groupId>javax</groupId>
+            <artifactId>javaee-api</artifactId>
+            <version>7.0</version>
+            <scope>provided</scope>
+        </dependency>
+    </dependencies>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <integration.container.id>glassfish4x</integration.container.id>
+        <glassfish.home>${glassfish.home.prefix}/glassfish4</glassfish.home>
+        <glassfish.domain.name>domain1</glassfish.domain.name>     
+    </properties>
+    
+    <profiles>
+        <profile>
+            <id>windows</id>
+            <activation>
+                <os>
+                    <family>windows</family>
+                </os>
+            </activation>
+            <properties>
+                <glassfish.home.prefix>c:/</glassfish.home.prefix>
+                <glassfish.executables.suffix>.bat</glassfish.executables.suffix>
+            </properties>
+        </profile>
+        <profile>
+            <id>unix</id>
+            <activation>
+                <os>
+                    <family>unix</family>
+                </os>
+            </activation>
+            <properties>
+                <glassfish.home.prefix>${user.home}</glassfish.home.prefix>
+                <glassfish.executables.suffix />
+            </properties>
+        </profile>
+    </profiles>
+		
+    <modules>
+        <module>facshop-payment</module>
+        <module>facshop-resources</module>
+        <module>facshop-store</module>
+        <module>facshop-events</module>
+        <module>facshop-entities</module>
+        <module>facshop-shipment</module>
+    </modules>
+       
+    <build>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-compiler-plugin</artifactId>
+                    <version>3.2</version>
+                    <configuration>
+                        <source>1.8</source>
+                        <target>1.8</target>
+                    </configuration>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+        <plugins>
+            <plugin>
+                <groupId>org.codehaus.cargo</groupId>
+                <artifactId>cargo-maven2-plugin</artifactId>
+                <version>1.4.12</version>
+                <executions>
+                    <execution>
+                        <id>deploy</id>
+                        <phase>integration-test</phase>
+                        <goals>
+                            <goal>redeploy</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <container>
+                        <containerId>${integration.container.id}</containerId>
+                        <type>installed</type>
+                        <home>${glassfish.home}</home>
+                    </container>
+                    <configuration>
+                        <type>existing</type>
+                        <home>${glassfish.home}/glassfish/domains</home>
+                        <properties>
+                            <cargo.glassfish.domain.name>${glassfish.domain.name}</cargo.glassfish.domain.name>
+                            <cargo.remote.username>admin</cargo.remote.username>
+                            <cargo.remote.password></cargo.remote.password> 
+                        </properties>
+                    </configuration>
+                </configuration>
+            </plugin>       	               
+        </plugins>
+    </build>
+    
+</project>
