@@ -96,7 +96,7 @@ public class CustomerController implements Serializable {
     }
 
     private boolean isUserDuplicated(Person p) {
-        return (getFacade().getUserByEmail(p.getEmail()) == null) ? false : true;
+        return (getFacade().getUserByEmail(p.getEmail()) != null);
     }
 
     public PageNavigation create() {
@@ -105,12 +105,10 @@ public class CustomerController implements Serializable {
                 current.setPassword(MD5Util.generateMD5(current.getPassword()));
                 getFacade().createUser(current);
                 JsfUtil.addSuccessMessage(ResourceBundle.getBundle(BUNDLE).getString("CustomerCreated"));
-
             } else {
                 JsfUtil.addErrorMessage(ResourceBundle.getBundle(BUNDLE).getString("DuplicatedCustomerError"));
-
             }
-            return PageNavigation.INDEX;
+            return PageNavigation.VIEW;
         } catch (Exception e) {
             JsfUtil.addErrorMessage(e, ResourceBundle.getBundle(BUNDLE).getString("CustomerCreationError"));
             return null;
@@ -126,6 +124,7 @@ public class CustomerController implements Serializable {
     public PageNavigation update() {
         try {
             logger.log(Level.INFO, "Updating customer ID:{0}", current.getId());
+            current.setPassword(MD5Util.generateMD5(current.getPassword()));
             getFacade().edit(current);
             JsfUtil.addSuccessMessage(ResourceBundle.getBundle(BUNDLE).getString("CustomerUpdated"));
             return PageNavigation.VIEW;
