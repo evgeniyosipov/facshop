@@ -16,7 +16,7 @@
         <h:form styleClass="jsfcrud_list_form">
             <h:panelGroup rendered="#{orderDetailController.items.rowCount > 0}">
 
-                <h2><h:outputText value="Позиции заказа ID #{param['orderId']}"/></h2>
+                <h2><h:outputText value="#{bundle.CustomerOrderDetail_id} #{param['orderId']}"/></h2>
                 <h:dataTable value="#{orderDetailController.items}" var="item" border="0" cellpadding="2" cellspacing="0" width="100%" rowClasses="firstRow, secondRow" rules="all" style="border:solid 1px">
                     <h:column>
                         <f:facet name="header">
