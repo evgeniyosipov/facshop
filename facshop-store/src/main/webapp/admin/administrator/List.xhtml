@@ -11,9 +11,6 @@
         </ui:define>
         <ui:define name="body">
             <h:form styleClass="jsfcrud_list_form">
-                <h:panelGroup id="listAdministratorMessagePanel" layout="block">
-                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
-                </h:panelGroup>
                 <h:outputText escape="false" value="#{bundle.ListAdministratorEmpty}" rendered="#{administratorController.items.rowCount == 0}"/>
                 <h:panelGroup rendered="#{administratorController.items.rowCount > 0}">
                     <ul class="commandButtons">

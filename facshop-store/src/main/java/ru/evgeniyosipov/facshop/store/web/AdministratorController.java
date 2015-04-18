@@ -7,6 +7,8 @@ import ru.evgeniyosipov.facshop.store.web.util.JsfUtil;
 import ru.evgeniyosipov.facshop.store.web.util.PageNavigation;
 import java.io.Serializable;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.ejb.EJB;
 import javax.enterprise.context.SessionScoped;
 import javax.faces.component.UIComponent;
@@ -17,6 +19,8 @@ import javax.faces.model.DataModel;
 import javax.faces.model.ListDataModel;
 import javax.faces.model.SelectItem;
 import javax.inject.Named;
+import ru.evgeniyosipov.facshop.entity.Person;
+import ru.evgeniyosipov.facshop.store.web.util.MD5Util;
 
 @Named(value = "administratorController")
 @SessionScoped
@@ -29,6 +33,9 @@ public class AdministratorController implements Serializable {
     private DataModel items = null;
     @EJB
     private ru.evgeniyosipov.facshop.store.ejb.AdministratorBean ejbFacade;
+
+    private static final Logger logger = Logger.getLogger(CustomerController.class.getCanonicalName());
+
     private AbstractPaginationHelper pagination;
     private int selectedItemIndex;
 
@@ -76,6 +83,10 @@ public class AdministratorController implements Serializable {
         return PageNavigation.VIEW;
     }
 
+    private boolean isAdministratorDuplicated(Person p) {
+        return (getFacade().getAdministratorByEmail(p.getEmail()) != null);
+    }
+
     public PageNavigation prepareCreate() {
         current = new Administrator();
         selectedItemIndex = -1;
@@ -84,9 +95,16 @@ public class AdministratorController implements Serializable {
 
     public PageNavigation create() {
         try {
-            getFacade().create(current);
-            JsfUtil.addSuccessMessage(ResourceBundle.getBundle(BUNDLE).getString("AdministratorCreated"));
-            return prepareCreate();
+            if (!isAdministratorDuplicated(current)) {
+                current.setPassword(MD5Util.generateMD5(current.getPassword()));
+                getFacade().create(current);
+                JsfUtil.addSuccessMessage(ResourceBundle.getBundle(BUNDLE).getString("AdministratorCreated"));
+                return PageNavigation.VIEW;
+            } else {
+                JsfUtil.addErrorMessage(ResourceBundle.getBundle(BUNDLE).getString("AdministratorDuplicatedError"));
+
+            }
+            return PageNavigation.VIEW;
         } catch (Exception e) {
             JsfUtil.addErrorMessage(e, ResourceBundle.getBundle(BUNDLE).getString("PersistenceErrorOccured"));
             return null;
@@ -101,6 +119,8 @@ public class AdministratorController implements Serializable {
 
     public PageNavigation update() {
         try {
+            logger.log(Level.INFO, "Updating administrator ID:{0}", current.getId());
+            current.setPassword(MD5Util.generateMD5(current.getPassword()));
             getFacade().edit(current);
             JsfUtil.addSuccessMessage(ResourceBundle.getBundle(BUNDLE).getString("AdministratorUpdated"));
             return PageNavigation.VIEW;
@@ -133,7 +153,11 @@ public class AdministratorController implements Serializable {
     private void performDestroy() {
         try {
             getFacade().remove(current);
-            JsfUtil.addSuccessMessage(ResourceBundle.getBundle(BUNDLE).getString("AdministratorDeleted"));
+            if (getFacade().isLastAdmimistrator()) {
+                JsfUtil.addErrorMessage(ResourceBundle.getBundle(BUNDLE).getString("AdministratorLastNonDelete"));
+            } else {
+                JsfUtil.addSuccessMessage(ResourceBundle.getBundle(BUNDLE).getString("AdministratorDeleted"));
+            }
         } catch (Exception e) {
             JsfUtil.addErrorMessage(e, ResourceBundle.getBundle(BUNDLE).getString("PersistenceErrorOccured"));
         }

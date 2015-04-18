@@ -106,7 +106,7 @@ public class CustomerController implements Serializable {
                 getFacade().createUser(current);
                 JsfUtil.addSuccessMessage(ResourceBundle.getBundle(BUNDLE).getString("CustomerCreated"));
             } else {
-                JsfUtil.addErrorMessage(ResourceBundle.getBundle(BUNDLE).getString("DuplicatedCustomerError"));
+                JsfUtil.addErrorMessage(ResourceBundle.getBundle(BUNDLE).getString("CustomerDuplicatedError"));
             }
             return PageNavigation.VIEW;
         } catch (Exception e) {
