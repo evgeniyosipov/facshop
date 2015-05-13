@@ -31,7 +31,7 @@ public class ShoppingCart implements Serializable {
     @Inject
     Conversation conversation;
     @EJB
-    OrderServiceBean facade;
+    OrderBean facade;
     @Inject
     @LoggedIn
     Person user;

@@ -47,7 +47,7 @@
     </login-config>
     <security-constraint>
         <web-resource-collection>
-            <web-resource-name>Secure Pages</web-resource-name>
+            <web-resource-name>Защищённые страницы</web-resource-name>
             <description/>
             <url-pattern>/admin/*</url-pattern>
         </web-resource-collection>

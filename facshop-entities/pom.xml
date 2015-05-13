@@ -53,7 +53,7 @@
                     <arguments>
                         <argument>create-auth-realm</argument>
                         <argument>--classname=com.sun.enterprise.security.auth.realm.jdbc.JDBCRealm</argument>
-                        <argument>--property=jaas-context=jdbcRealm:datasource-jndi=java\:global/FacshopDataSource:user-table=FACSHOPDB.PERSON:user-name-column=email:password-column=password:group-table=FACSHOPDB.GROUPS:group-table-user-name-column=name:group-name-column=name:assign-groups=USERS,ADMINS:digest-algorithm=MD5:digestrealm-password-enc-algorithm=MD5:charset=UTF-8:encoding=Hex</argument>
+                        <argument>--property=jaas-context=jdbcRealm:datasource-jndi=java\:global/FacshopDataSource:user-table=FACSHOPDB.PERSON:user-name-column=EMAIL:password-column=PASSWORD:group-table=FACSHOPDB.PERSON_GROUPS:group-table-user-name-column=PERSON_EMAIL:group-name-column=GROUPS_NAME:digest-algorithm=MD5:digestrealm-password-enc-algorithm=MD5:charset=UTF-8:encoding=Hex</argument>
                         <argument>jdbcRealm</argument>
                     </arguments>
                 </configuration>

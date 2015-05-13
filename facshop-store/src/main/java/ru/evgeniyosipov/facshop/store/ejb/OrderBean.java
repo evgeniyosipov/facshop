@@ -15,7 +15,7 @@ import javax.ws.rs.*;
 
 @Stateless
 @Path("/orders")
-public class OrderServiceBean extends AbstractFacade<CustomerOrder> implements Serializable {
+public class OrderBean extends AbstractFacade<CustomerOrder> implements Serializable {
 
     private static final Logger logger
             = Logger.getLogger(ShoppingCart.class.getCanonicalName());
@@ -26,7 +26,7 @@ public class OrderServiceBean extends AbstractFacade<CustomerOrder> implements S
     @EJB
     OrderStatusBean statusBean;
 
-    public OrderServiceBean() {
+    public OrderBean() {
         super(CustomerOrder.class);
     }
 

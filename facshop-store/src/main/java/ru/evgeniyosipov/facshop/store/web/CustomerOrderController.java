@@ -1,6 +1,6 @@
 package ru.evgeniyosipov.facshop.store.web;
 
-import ru.evgeniyosipov.facshop.store.ejb.OrderServiceBean;
+import ru.evgeniyosipov.facshop.store.ejb.OrderBean;
 import ru.evgeniyosipov.facshop.store.ejb.OrderJMSManager;
 import ru.evgeniyosipov.facshop.entity.CustomerOrder;
 import ru.evgeniyosipov.facshop.entity.Person;
@@ -38,7 +38,7 @@ public class CustomerOrderController implements Serializable {
     private CustomerOrder current;
     private DataModel items = null;
     @EJB
-    private ru.evgeniyosipov.facshop.store.ejb.OrderServiceBean ejbFacade;
+    private ru.evgeniyosipov.facshop.store.ejb.OrderBean ejbFacade;
     @EJB
     private OrderJMSManager orderJMSManager;
     private AbstractPaginationHelper pagination;
@@ -57,7 +57,7 @@ public class CustomerOrderController implements Serializable {
         return current;
     }
 
-    private OrderServiceBean getFacade() {
+    private OrderBean getFacade() {
         return ejbFacade;
     }
 
@@ -138,7 +138,7 @@ public class CustomerOrderController implements Serializable {
         try {
             orderJMSManager.deleteMessage(current.getId());
 
-            ejbFacade.setOrderStatus(current.getId(), String.valueOf(OrderServiceBean.Status.CANCELLED_MANUAL.getStatus()));
+            ejbFacade.setOrderStatus(current.getId(), String.valueOf(OrderBean.Status.CANCELLED_MANUAL.getStatus()));
 
             recreateModel();
             return PageNavigation.LIST;

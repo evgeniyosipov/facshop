@@ -103,7 +103,7 @@ public class CustomerController implements Serializable {
         try {
             if (!isUserDuplicated(current)) {
                 current.setPassword(MD5Util.generateMD5(current.getPassword()));
-                getFacade().createUser(current);
+                getFacade().create(current);
                 JsfUtil.addSuccessMessage(ResourceBundle.getBundle(BUNDLE).getString("CustomerCreated"));
             } else {
                 JsfUtil.addErrorMessage(ResourceBundle.getBundle(BUNDLE).getString("CustomerDuplicatedError"));

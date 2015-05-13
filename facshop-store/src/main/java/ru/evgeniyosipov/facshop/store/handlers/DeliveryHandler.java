@@ -1,6 +1,6 @@
 package ru.evgeniyosipov.facshop.store.handlers;
 
-import ru.evgeniyosipov.facshop.store.ejb.OrderServiceBean;
+import ru.evgeniyosipov.facshop.store.ejb.OrderBean;
 import ru.evgeniyosipov.facshop.store.ejb.OrderJMSManager;
 import ru.evgeniyosipov.facshop.entity.CustomerOrder;
 import ru.evgeniyosipov.facshop.events.OrderEvent;
@@ -20,7 +20,7 @@ public class DeliveryHandler implements IOrderHandler, Serializable {
     private static final long serialVersionUID = 4346750267714932851L;
 
     @EJB
-    OrderServiceBean orderBean;
+    OrderBean orderBean;
     @EJB
     OrderJMSManager orderPublisher;
 
@@ -33,7 +33,7 @@ public class DeliveryHandler implements IOrderHandler, Serializable {
         try {
             logger.log(Level.INFO, "Order #{0} has been paid in the amount of {1}. Order is now ready for delivery!", new Object[]{event.getOrderID(), event.getAmount()});
 
-            orderBean.setOrderStatus(event.getOrderID(), String.valueOf(OrderServiceBean.Status.READY_TO_SHIP.getStatus()));
+            orderBean.setOrderStatus(event.getOrderID(), String.valueOf(OrderBean.Status.READY_TO_SHIP.getStatus()));
             CustomerOrder order = orderBean.getOrderById(event.getOrderID());
             if (order != null) {
                 orderPublisher.sendMessage(order);

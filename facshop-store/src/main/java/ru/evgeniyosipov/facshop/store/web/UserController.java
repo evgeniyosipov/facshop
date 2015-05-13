@@ -96,7 +96,12 @@ public class UserController implements Serializable {
     }
 
     public boolean isLogged() {
-        return (getUser() == null) ? false : true;
+        if (FacesContext.getCurrentInstance().getExternalContext().getUserPrincipal() != null) {
+            user = ejbFacade.getUserByEmail(FacesContext.getCurrentInstance().getExternalContext().getUserPrincipal().toString());
+            return true;
+        } else {
+            return false;
+        }
     }
 
     public boolean isAdmin() {

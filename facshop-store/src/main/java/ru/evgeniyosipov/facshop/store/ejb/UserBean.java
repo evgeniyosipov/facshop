@@ -6,6 +6,7 @@ import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
+import ru.evgeniyosipov.facshop.entity.Groups;
 
 @Stateless
 public class UserBean extends AbstractFacade<Customer> {
@@ -18,14 +19,25 @@ public class UserBean extends AbstractFacade<Customer> {
         return em;
     }
 
-    public boolean createUser(Customer customer) {
-
-        if (getUserByEmail(customer.getEmail()) == null) {
-            super.create(customer);
-            return true;
-        } else {
-            return false;
-        }
+    @Override
+    public void create(Customer user) {
+        Groups userGroup = (Groups) em.createNamedQuery("Groups.findByName")
+                .setParameter("name", "USERS")
+                .getSingleResult();
+        user.getGroupsList().add(userGroup);
+        userGroup.getPersonList().add(user);
+        em.persist(user);
+        em.merge(userGroup);
+    }
+    
+    @Override
+    public void remove(Customer user) {
+        Groups userGroup = (Groups) em.createNamedQuery("Groups.findByName")
+                .setParameter("name", "USERS")
+                .getSingleResult();
+            userGroup.getPersonList().remove(user);
+            em.remove(em.merge(user));
+            em.merge(userGroup);
     }
 
     public Person getUserByEmail(String email) {

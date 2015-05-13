@@ -11,13 +11,12 @@
         <h:inputSecret id="password" value="#{userController.password}" size="50" />
 
         <h:commandButton action="#{userController.login}"  value="#{bundle.Topbar_Login_Label}" /> 
-        <h:commandButton action="customer/Create.xhtml"  value="#{bundle.Topbar_Signup_Label}" />
         <h:outputLink value="/facshop-store/" >${bundle.GoToStore}</h:outputLink>
     </h:form>
-    <h:form rendered="#{userController.logged}">
+    <h:form rendered="#{userController.logged}" >
+        <h:outputLink value="/facshop-store/admin/" >${bundle.AdminGoAdminLink}</h:outputLink>
         <h:commandButton action="#{userController.logout}" immediate="true" value="#{bundle.Topbar_Logout_Label}"/>
-        <h:outputText value=" #{bundle.Topbar_User_Label} #{userController.authenticatedUser.email}"  styleClass="user"/>
-        <h:outputLink value="/facshop-store/admin/" >${bundle.GoToStore}</h:outputLink>
+        <h:outputText value=" #{bundle.Topbar_User_Label} #{userController.authenticatedUser.email}"  styleClass="user"/>        
     </h:form>
 
 </ui:composition>

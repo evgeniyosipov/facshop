@@ -22,8 +22,8 @@ public class Person implements Serializable {
 
     private static final long serialVersionUID = 6253057722726297688L;
     @JoinTable(name = "PERSON_GROUPS", joinColumns = {
-        @JoinColumn(name = "EMAIL", referencedColumnName = "EMAIL")}, inverseJoinColumns = {
-        @JoinColumn(name = "GROUPS_ID", referencedColumnName = "ID")})
+        @JoinColumn(name = "PERSON_EMAIL", referencedColumnName = "EMAIL")}, inverseJoinColumns = {
+        @JoinColumn(name = "GROUPS_NAME", referencedColumnName = "NAME")})
     @ManyToMany
     protected List<Groups> groupsList;
     @Id

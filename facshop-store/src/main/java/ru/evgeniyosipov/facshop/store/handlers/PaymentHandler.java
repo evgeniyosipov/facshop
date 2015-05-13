@@ -1,6 +1,6 @@
 package ru.evgeniyosipov.facshop.store.handlers;
 
-import ru.evgeniyosipov.facshop.store.ejb.OrderServiceBean;
+import ru.evgeniyosipov.facshop.store.ejb.OrderBean;
 import ru.evgeniyosipov.facshop.events.OrderEvent;
 import ru.evgeniyosipov.facshop.store.qualifiers.New;
 import ru.evgeniyosipov.facshop.store.qualifiers.Paid;
@@ -34,7 +34,7 @@ public class PaymentHandler implements IOrderHandler, Serializable {
     @Paid
     Event<OrderEvent> eventManager;
     @EJB
-    OrderServiceBean orderBean;
+    OrderBean orderBean;
 
     @Override
     @Asynchronous
@@ -45,12 +45,12 @@ public class PaymentHandler implements IOrderHandler, Serializable {
 
         if (processPayment(event)) {
             orderBean.setOrderStatus(event.getOrderID(),
-                    String.valueOf(OrderServiceBean.Status.PENDING_PAYMENT.getStatus()));
+                    String.valueOf(OrderBean.Status.PENDING_PAYMENT.getStatus()));
             logger.info("Payment Approved");
             eventManager.fire(event);
         } else {
             orderBean.setOrderStatus(event.getOrderID(),
-                    String.valueOf(OrderServiceBean.Status.CANCELLED_PAYMENT.getStatus()));
+                    String.valueOf(OrderBean.Status.CANCELLED_PAYMENT.getStatus()));
             logger.info("Payment Denied");
         }
     }
