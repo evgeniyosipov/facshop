@@ -29,15 +29,15 @@ public class UserBean extends AbstractFacade<Customer> {
         em.persist(user);
         em.merge(userGroup);
     }
-    
+
     @Override
     public void remove(Customer user) {
         Groups userGroup = (Groups) em.createNamedQuery("Groups.findByName")
                 .setParameter("name", "USERS")
                 .getSingleResult();
-            userGroup.getPersonList().remove(user);
-            em.remove(em.merge(user));
-            em.merge(userGroup);
+        userGroup.getPersonList().remove(user);
+        em.remove(em.merge(user));
+        em.merge(userGroup);
     }
 
     public Person getUserByEmail(String email) {
