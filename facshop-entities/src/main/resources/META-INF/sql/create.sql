@@ -34,9 +34,9 @@ INSERT INTO "FACSHOPDB"."CATEGORY" (NAME,TAGS) VALUES ('Датчики емко�
 INSERT INTO "FACSHOPDB"."CATEGORY" (NAME,TAGS) VALUES ('Датчики индуктивные','датчики индуктивные')
 INSERT INTO "FACSHOPDB"."CATEGORY" (NAME,TAGS) VALUES ('Датчики уровня жидкости','датчики уровня жидкости')
 
-INSERT INTO "FACSHOPDB"."PERSON" (FIRSTNAME,LASTNAME,EMAIL,ADDRESS,CITY,PASSWORD,DTYPE) VALUES ('Evgeniy','Osipov','evgeniy@fastandclever.ru','Ivanovo','Ivanovo','c4ca4238a0b923820dcc509a6f75849b','Customer')
-INSERT INTO "FACSHOPDB"."PERSON" (FIRSTNAME,LASTNAME,EMAIL,ADDRESS,CITY,PASSWORD,DTYPE) VALUES ('Paymant User','Paymant User','paymentuser@fastandclever.ru','','','c4ca4238a0b923820dcc509a6f75849b','Customer')
-INSERT INTO "FACSHOPDB"."PERSON" (FIRSTNAME,LASTNAME,EMAIL,ADDRESS,CITY,PASSWORD,DTYPE) VALUES ('Administrator','Administrator','admin@fastandclever.ru','Ivanovo','Ivanovo','c4ca4238a0b923820dcc509a6f75849b','Administrator')
+INSERT INTO "FACSHOPDB"."PERSON" (FIRSTNAME,LASTNAME,EMAIL,ADDRESS,CITY,PASSWORD,DTYPE) VALUES ('Evgeniy','Osipov','evgeniy@fastandclever.ru','Ivanovo','Ivanovo','81dc9bdb52d04dc20036dbd8313ed055','Customer')
+INSERT INTO "FACSHOPDB"."PERSON" (FIRSTNAME,LASTNAME,EMAIL,ADDRESS,CITY,PASSWORD,DTYPE) VALUES ('Paymant User','Paymant User','paymentuser@fastandclever.ru','','','81dc9bdb52d04dc20036dbd8313ed055','Customer')
+INSERT INTO "FACSHOPDB"."PERSON" (FIRSTNAME,LASTNAME,EMAIL,ADDRESS,CITY,PASSWORD,DTYPE) VALUES ('Administrator','Administrator','admin@fastandclever.ru','Ivanovo','Ivanovo','81dc9bdb52d04dc20036dbd8313ed055','Administrator')
 
 INSERT INTO "FACSHOPDB"."GROUPS" (NAME, DESCRIPTION) VALUES ('USERS', 'Пользователи/Клиенты')
 INSERT INTO "FACSHOPDB"."GROUPS" (NAME, DESCRIPTION) VALUES ('ADMINS', 'Администраторы')

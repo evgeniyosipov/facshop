@@ -71,7 +71,7 @@
         <port-number>1527</port-number>
         <database-name>FACSHOPDB</database-name>
         <user>FACSHOPDB</user>
-        <password>app</password>
+        <password>1234</password>
         <property>
             <name>connectionAttributes</name>
             <value>;create=true</value>
