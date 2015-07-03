@@ -15,9 +15,9 @@ import javax.jms.Queue;
 import javax.jms.QueueBrowser;
 
 @JMSDestinationDefinition(
-        name = "java:global/jms/OrderQueue",
+        name = "java:global/jms/FacshopOrderQueue",
         interfaceName = "javax.jms.Queue",
-        destinationName = "PhysicalOrderQueue")
+        destinationName = "PhysicalFacshopOrderQueue")
 @Stateless
 public class OrderJMSManager {
 
@@ -25,7 +25,7 @@ public class OrderJMSManager {
     @Inject
     private JMSContext context;
 
-    @Resource(mappedName = "java:global/jms/OrderQueue")
+    @Resource(mappedName = "java:global/jms/FacshopOrderQueue")
     private Queue queue;
     private QueueBrowser browser;
 

@@ -29,34 +29,34 @@
     </dependencies>
     
     <build>
-        <finalName>${project.artifactId}</finalName>
         <plugins>
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>exec-maven-plugin</artifactId>
-                <version>1.3.2</version>
+                <version>${maven.exec.plugin.version}</version>
                 <executions>
                     <execution>
+                        <id>Create Auth Realm</id>
                         <phase>compile</phase>
                         <goals>
                             <goal>exec</goal>
                         </goals>
+                        <configuration>
+                            <skip>false</skip>
+                            <executable>${glassfish.home}/bin/asadmin${glassfish.executables.suffix}</executable>
+                            <successCodes>
+                                <successCode>0</successCode>
+                                <successCode>1</successCode>
+                            </successCodes>
+                            <arguments>
+                                <argument>create-auth-realm</argument>
+                                <argument>--classname=com.sun.enterprise.security.auth.realm.jdbc.JDBCRealm</argument>
+                                <argument>--property=jaas-context=jdbcRealm:datasource-jndi=java\:global/FacshopDataSource:user-table=FACSHOPDB.PERSON:user-name-column=EMAIL:password-column=PASSWORD:group-table=FACSHOPDB.PERSON_GROUPS:group-table-user-name-column=PERSON_EMAIL:group-name-column=GROUPS_NAME:digest-algorithm=MD5:digestrealm-password-enc-algorithm=MD5:charset=UTF-8:encoding=Hex</argument>
+                                <argument>facshopJdbcRealm</argument>
+                            </arguments>
+                        </configuration>
                     </execution>
-                </executions>
-                <configuration>
-                    <skip>false</skip>
-                    <executable>${glassfish.home}/bin/asadmin${glassfish.executables.suffix}</executable>
-                    <successCodes>
-                        <successCode>0</successCode>
-                        <successCode>1</successCode>
-                    </successCodes>
-                    <arguments>
-                        <argument>create-auth-realm</argument>
-                        <argument>--classname=com.sun.enterprise.security.auth.realm.jdbc.JDBCRealm</argument>
-                        <argument>--property=jaas-context=jdbcRealm:datasource-jndi=java\:global/FacshopDataSource:user-table=FACSHOPDB.PERSON:user-name-column=EMAIL:password-column=PASSWORD:group-table=FACSHOPDB.PERSON_GROUPS:group-table-user-name-column=PERSON_EMAIL:group-name-column=GROUPS_NAME:digest-algorithm=MD5:digestrealm-password-enc-algorithm=MD5:charset=UTF-8:encoding=Hex</argument>
-                        <argument>jdbcRealm</argument>
-                    </arguments>
-                </configuration>
+                </executions>                
             </plugin> 
         </plugins>         
     </build>
