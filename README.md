@@ -36,7 +36,7 @@
 Для компиляции и запуска вам потребуются:
 * Запустить сервер приложений GlassFish 4.1, выполнив команду "asadmin start-domain domain1" в директории glassfish4/bin - http://docs.oracle.com/javaee/7/tutorial/usingexamples002.htm
 * Запустить сервер Java , выполнив команду "asadmin start-database" в директории glassfish4/bin - http://docs.oracle.com/javaee/7/tutorial/usingexamples004.htm
-* Скомпилировать и развернуть веб-приложения, выполнив команду "mvn clean install" в корневой директории комплекса - http://docs.oracle.com/javaee/7/tutorial/dukes-forest002.htm
+* Скомпилировать и развернуть веб-приложения, выполнив команду "mvn install" в корневой директории комплекса - http://docs.oracle.com/javaee/7/tutorial/dukes-forest002.htm
 
 Данная работа основана на официальном обучающем примере от компании Oracle - http://docs.oracle.com/javaee/7/tutorial/dukes-forest.htm
 
