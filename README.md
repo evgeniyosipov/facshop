@@ -42,4 +42,4 @@
 
 За основу взят исходный код от версии Java EE Tutorial 7.0.5 - https://java.net/projects/javaeetutorial/sources/svn/show/branches/javaee-tutorial-7.0.5/examples/case-studies/dukes-forest
 
-Внесён рад исправлений и улучшений, а также произведены специфичные изменения.
+Внесён рад исправлений и улучшений, которые, в свою очередь, переданы сообществу проекта The Java EE Tutorial - https://java.net/projects/javaeetutorial/pages/JavaEETutorialHome. Также произведены специфичные изменения.
