@@ -34,6 +34,7 @@
 * (Дополнительно) Интегрированная среда разработки NetBeans 8 - https://netbeans.org/downloads/
 
 Для компиляции и запуска вам потребуются:
+* В зависимости от операционной системы, поместить каталог glassfish4 в следующую директорию: Windows ОС - C:\, Unix-подобные ОС - ~/
 * Запустить сервер приложений GlassFish 4.1, выполнив команду "asadmin start-domain domain1" в директории glassfish4/bin - http://docs.oracle.com/javaee/7/tutorial/usingexamples002.htm
 * Запустить сервер Java , выполнив команду "asadmin start-database" в директории glassfish4/bin - http://docs.oracle.com/javaee/7/tutorial/usingexamples004.htm
 * Скомпилировать и развернуть веб-приложения, выполнив команду "mvn install" в корневой директории комплекса - http://docs.oracle.com/javaee/7/tutorial/dukes-forest002.htm
