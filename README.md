@@ -21,12 +21,6 @@
 * Сущности (facshop-entities) - Содержит в себе все сущности JPA;
 * Ресурсы (facshop-resources) - Содержит в себе все ресурсы, используемые веб-приложениями. Включает в себя сообщения, файлы CSS, изображения, файлы JavaScript и составные компоненты JavaServer Faces.
 
-Работу данного комплекса веб-приложений можно просмотреть на сайте - http://fastandclever.ru/facshop-store/ 
-* Обычный пользователь - evgeniy@fastandclever.ru, пароль - 1234
-* Администратор - admin@fastandclever.ru, пароль - 1234
-
-!!! Каждый час происходит автоматическая синхронизация кодовой базы, компиляция и развёртывание на сервер приложений, что приводит к сбросу данных по умолчанию, так что можно смело вносить различные изменения !!!
-
 Необходимый набор ПО:
 * Java SE Development Kit 8 - http://www.oracle.com/technetwork/java/javase/downloads/index.html
 * Сервер приложений GlassFish 4.1 - https://glassfish.java.net/download.html
@@ -38,6 +32,10 @@
 * Запустить сервер приложений GlassFish 4.1, выполнив команду "asadmin start-domain domain1" в директории glassfish4/bin - http://docs.oracle.com/javaee/7/tutorial/usingexamples002.htm
 * Запустить сервер Java , выполнив команду "asadmin start-database" в директории glassfish4/bin - http://docs.oracle.com/javaee/7/tutorial/usingexamples004.htm
 * Скомпилировать и развернуть веб-приложения, выполнив команду "mvn install" в корневой директории комплекса - http://docs.oracle.com/javaee/7/tutorial/dukes-forest002.htm
+
+Работу данного комплекса веб-приложений можно просмотреть перейдя по ссылке - http://localhost:8080/facshop-store/  
+* Обычный пользователь - evgeniy@fastandclever.ru, пароль - 1234
+* Администратор - admin@fastandclever.ru, пароль - 1234
 
 Данная работа основана на официальном обучающем примере от компании Oracle - http://docs.oracle.com/javaee/7/tutorial/dukes-forest.htm
 
