@@ -59,7 +59,7 @@ public class PaymentHandler implements IOrderHandler, Serializable {
 
         boolean success = false;
         Client client = ClientBuilder.newClient();
-        client.register(new AuthClientRequestFilter("paymentuser@fastandclever.ru", "1234"));
+        client.register(new AuthClientRequestFilter("paymentuser@example.com", "1234"));
         Response resp = client.target(ENDPOINT)
                 .request(MediaType.APPLICATION_XML)
                 .post(Entity.entity(order, MediaType.APPLICATION_XML), Response.class);

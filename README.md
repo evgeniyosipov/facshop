@@ -1,8 +1,6 @@
 # Быстрый и Умный Интернет-Магазин
 
-Комплекс проектов "Быстрый и Умный Интернет-Магазин", разработанный посредством Java EE 7. Создавался как часть научной работы для диплома.
-
-"Быстрый и Умный Интернет-Магазин" является приложением для электронной коммерции, которое содержит в себе несколько веб-приложений и иллюстрирует использование различных Java EE 7 API:
+Комплекс проектов "Быстрый и Умный Интернет-Магазин" (англ. Fast and Clever e-Shop, сокращ. facshop) является приложением для электронной коммерции, которое содержит в себе несколько веб-приложений и иллюстрирует использование различных Java EE 7 API:
 * JavaServer Faces, включая Ajax;
 * Контекст и Внедрение Зависимостей для Java EE (Contexts and Dependency Injection (CDI));
 * Java API для вэб-служб RESTful (Java API for RESTful Web Services (JAX-RS));
@@ -25,7 +23,7 @@
 * Java SE Development Kit 8 - http://www.oracle.com/technetwork/java/javase/downloads/index.html
 * Сервер приложений GlassFish 4.1 - https://glassfish.java.net/download.html
 * Сборщик проектов Maven 3.3.3 - https://maven.apache.org/download.cgi
-* (Дополнительно) Интегрированная среда разработки NetBeans 8 - https://netbeans.org/downloads/
+* (Дополнительно) Интегрированная среда разработки NetBeans 8 - https://netbeans.org/downloads
 
 Для компиляции и запуска вам потребуются:
 * В зависимости от операционной системы, поместить каталог glassfish4 в следующую директорию: Windows ОС - C:\, Unix-подобные ОС - ~/
@@ -33,9 +31,9 @@
 * Запустить сервер Java , выполнив команду "asadmin start-database" в директории glassfish4/bin - http://docs.oracle.com/javaee/7/tutorial/usingexamples004.htm
 * Скомпилировать и развернуть веб-приложения, выполнив команду "mvn install" в корневой директории комплекса - http://docs.oracle.com/javaee/7/tutorial/dukes-forest002.htm
 
-Работу данного комплекса веб-приложений можно просмотреть перейдя по ссылке - http://localhost:8080/facshop-store/  
-* Обычный пользователь - evgeniy@fastandclever.ru, пароль - 1234
-* Администратор - admin@fastandclever.ru, пароль - 1234
+Работу данного комплекса веб-приложений можно просмотреть перейдя по ссылке - http://localhost:8080/facshop-store  
+* Обычный пользователь - user@example.com, пароль - 1234
+* Администратор - admin@example.com, пароль - 1234
 
 Данная работа основана на официальном обучающем примере от компании Oracle - http://docs.oracle.com/javaee/7/tutorial/dukes-forest.htm
 
